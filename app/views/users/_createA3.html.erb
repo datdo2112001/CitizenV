@@ -1,0 +1,15 @@
+<%= form_with(model: @user, local: true) do |f| %>
+		<%= render 'shared/error_messages' %>
+		<h3><b> User type: A3 </b> </h3>
+		<%= f.hidden_field :tk, :value => 'A3' %>
+		<%= f.hidden_field :permission, :value => 'false' %>
+		<%= f.label :ID %>
+		<%= f.number_field :accountname, min: 101, max:6399, step: 1 %>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+		<%= f.label :password_confirmation, "Confirmation" %>
+		<%= f.password_field :password_confirmation %>
+		<%= f.label :region %>
+		<%= f.text_field :region %>
+		<%= f.submit "Create new account", class: "btn btn-primary" %>
+	<% end %>

@@ -1,0 +1,12 @@
+<div class="container">
+<h1>Citizens</h1>
+<ul>
+  <% @citizens.each do |citizen| %>
+    <% if checkcode(@current_code, citizen.code) == true %>
+      <li>
+        <%= citizen.cmnd %> - <%= citizen.name %> - <%= citizen.birthday %> - <%= citizen.sex %> - <%= citizen.paddress %>
+        <%= link_to 'Detail', '#', class: 'btn btn-primary' %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

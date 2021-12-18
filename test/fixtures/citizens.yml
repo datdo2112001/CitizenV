@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cmnd: MyString
+  name: MyString
+  birthday: 2021-12-16 19:42:42
+  sex: MyString
+  hometown: MyString
+  paddress: MyString
+  traddress: MyString
+  religion: MyString
+  edulevel: MyString
+  job: MyString
+  code: 1
+
+two:
+  cmnd: MyString
+  name: MyString
+  birthday: 2021-12-16 19:42:42
+  sex: MyString
+  hometown: MyString
+  paddress: MyString
+  traddress: MyString
+  religion: MyString
+  edulevel: MyString
+  job: MyString
+  code: 1

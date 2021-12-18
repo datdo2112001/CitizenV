@@ -1,0 +1,35 @@
+<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Add new Local</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Add new citizen</h2>
+      </header>
+      <div class="w3-container">
+        <%= form_for(@local, remote: true) do |f| %>
+          <%= f.label :Name %><br>
+          <%= f.text_field :name %><br>
+          <%= f.label :Code %><br>
+          <%= f.text_field :code %><br>
+          <%= f.hidden_field :status, :value => 'Chua hoan thanh' %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p></p>
+      </footer>
+    </div>
+  </div>
+
+  <h1> ALL LOCAL </h1>
+    <ul class="users" id="locals">
+      <% @locals.each do |local| %>
+        <li>
+          <%= local.name %> -- <%= local.code %> -- <%= local.status %>
+          <%= link_to 'Detail', "/detail/#{local.code}", class: 'btn btn-primary' %>
+          <%= link_to 'Delete', local, method: :delete, data: { confirm: 'Are you sure?' }, remote: :true, class: "destroy-local btn btn-warning" %>
+        </li>
+      <% end %>
+    </ul>

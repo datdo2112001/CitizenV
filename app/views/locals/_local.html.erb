@@ -1,0 +1,5 @@
+<li>
+    <%= local.name %> -- <%= local.code %> -- <%= local.status %>
+    <%= link_to 'Detail', "/detail/#{local.code}", class: 'btn btn-primary' %>
+    <%= link_to 'Delete', local, method: :delete, data: { confirm: 'Are you sure?' }, remote: :true, class: "destroy-local btn btn-warning" %>
+ </li>

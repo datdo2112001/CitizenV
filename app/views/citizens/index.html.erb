@@ -1,0 +1,74 @@
+<% if current_user.permission == "true" %>
+<div class="container">
+<h1>Citizens</h1>
+<table>
+  <thead class="table">
+    <tr>
+      <th>CMND</th>
+      <th>Name</th>
+      <th>Birthday</th>
+      <th>Sex</th>
+      <th>Hometown</th>
+      <th>PAddress</th>
+      <th>TrAddress</th>
+      <th>Religion</th>
+      <th>Edulevel</th>
+      <th>Job</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody id="citizens">
+    <%= render @citizens %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Add new citizen</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Add new citizen</h2>
+      </header>
+      <div class="w3-container">
+        <%= form_for(@citizen, remote: true) do |f| %>
+          <%= f.label :CMND %><br>
+          <%= f.text_field :cmnd %><br>
+          <%= f.label :Name %><br>
+          <%= f.text_field :name %><br>
+          <%= f.label :BirthDay %><br>
+          <%= f.date_field :birthday, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") %><br>
+          <%= f.label :Sex %><br>
+          <%= f.text_field :sex %><br>
+          <%= f.label :Hometown %><br>
+          <%= f.text_field :hometown %><br>
+          <%= f.label :PAddress %><br>
+          <%= f.text_field :paddress %><br>
+          <%= f.label :TrAddress%><br>
+          <%= f.text_field :traddress %><br>
+          <%= f.label :Religion %><br>
+          <%= f.text_field :religion %><br>
+          <%= f.label :Edulevel %><br>
+          <%= f.text_field :edulevel %><br>
+          <%= f.label :Job %><br>
+          <%= f.text_field :job %><br>
+          <%= f.label :Code %><br>
+          <%= f.number_field :code %><br>
+          <%= f.submit%>
+        <% end %>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p></p>
+      </footer>
+    </div>
+  </div>
+
+
+<br>
+<% else %>
+  <h1> Bạn chưa được cấp quyền khai báo </h1>
+<% end %>

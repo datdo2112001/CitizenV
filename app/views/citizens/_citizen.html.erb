@@ -1,0 +1,16 @@
+<tr>
+  <td><%= citizen.cmnd %></td>
+  <td><%= citizen.name %></td>
+  <td><%= citizen.birthday %></td>
+  <td><%= citizen.sex %></td>
+  <td><%= citizen.hometown %></td>
+  <td><%= citizen.paddress %></td>
+  <td><%= citizen.traddress %></td>
+  <td><%= citizen.religion %></td>
+  <td><%= citizen.edulevel %></td>
+  <td><%= citizen.job %></td>
+  <td><%= citizen.code %></td>
+  <td><%= link_to 'Edit', '#', class: 'btn btn-primary' %></td>
+  <td><%= link_to 'Delete', citizen, method: :delete, data: { confirm: 'Are you sure?' }, remote: :true, class: "destroy-citizen btn btn-primary" %></td>
+  
+</tr>

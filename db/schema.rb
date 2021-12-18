@@ -10,17 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_150003) do
+ActiveRecord::Schema.define(version: 2021_12_18_074232) do
+
+  create_table "citizens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "cmnd"
+    t.string "name"
+    t.datetime "birthday"
+    t.string "sex"
+    t.string "hometown"
+    t.string "paddress"
+    t.string "traddress"
+    t.string "religion"
+    t.string "edulevel"
+    t.string "job"
+    t.integer "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "tk"
-    t.string "username"
-    t.string "password_digest"
-    t.boolean "status"
-    t.string "usercode"
+    t.integer "accountname"
     t.string "region"
+    t.string "permission"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.index ["accountname"], name: "index_users_on_accountname", unique: true
   end
 
 end

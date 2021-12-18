@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CitizenV</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= yield(:title) %></title>
+    <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                          'data-turbolinks-track': 'reload' %>
 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+  </head>
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "CITIZEN V", '#', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Tổng quan", overall_path %></li>
+            <li><%= link_to "Phân tích", '#' %></li>
+
+            <% if current_user.tk != "B2" %>
+              <li><%= link_to "Quản lý dân số", showlocal_path %></li>
+            <% end %>
+
+            <% if current_user.tk == "B1" || current_user.tk == "B2" %>
+              <li><%= link_to "Khai báo dân số", showcitizen_path %></li>
+            <% end %>
+
+            <li><%= link_to "Quản lý người dùng", alluser_path %></li>
+            <li><%= link_to "Thêm người dùng mới", signup_path %></li>
+            <li><%= link_to "Đăng xuất", logout_path, method: :delete %></li>
+          </ul>
+        </nav>  
+      </div>
+    </header>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <footer class="footer">
+      <nav>
+        <ul>
+          <li><%= link_to "About", '#' %></li>
+          <li><%= link_to "Contact", '#' %></li>
+          <li><a href="https://news.railstutorial.org/">News</a></li>
+        </ul>
+      </nav>
+    </footer>
+     
+    </div>
   </body>
 </html>

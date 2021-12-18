@@ -1,13 +1,14 @@
 
 
-<% provide(:title, @user.username) %>
+<% provide(:title, @user.tk) %>
 <div class="row">
 	<aside class="col-md-4">
-		<section class="user_info">
-			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.tk %> - <%= @user.region %> - <%= @user.status %></h1>
-			</h1>
-		</section>
+	<section class="user_info">
+		<h1>
+			<%= gravatar_for @user %>
+			<b> <%= @user.tk %> -- <%= @user.region %> -- <%= @user.permission %> </b>
+
+		</h1>
+	</section>
 	</aside>
 </div>
