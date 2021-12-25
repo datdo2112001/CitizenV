@@ -169,7 +169,11 @@ padding: 10px 0;
 border-bottom: 1px solid $gray-lighter;
 }
 }
-
-table {
-	border-spacing: 20px;
+td {
+	border:1px solid black;
+	text-align: center;
+}
+.table th {
+	border:1px solid black;
+	text-align: center;
 }

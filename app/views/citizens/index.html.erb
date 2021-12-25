@@ -1,7 +1,7 @@
 <% if current_user.permission == "true" %>
 <div class="container">
 <h1>Citizens</h1>
-<table>
+<table border="1" style="width:110%">
   <thead class="table">
     <tr>
       <th>CMND</th>
@@ -37,6 +37,7 @@
       <div class="w3-container">
         <%= form_for(@citizen, remote: true) do |f| %>
           <%= f.label :CMND %><br>
+          <p>Tối thiểu 10 chữ số</p>
           <%= f.text_field :cmnd %><br>
           <%= f.label :Name %><br>
           <%= f.text_field :name %><br>
@@ -59,6 +60,7 @@
           <%= f.label :Code %><br>
           <%= f.number_field :code %><br>
           <%= f.submit%>
+          
         <% end %>
       </div>
       <footer class="w3-container w3-teal">
