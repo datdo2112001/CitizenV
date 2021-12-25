@@ -1,13 +1,14 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
-<div class="row">
+<h1>Đăng nhập</h1>
+<div class="row" data-controller="password-toggle">
 	<div class="col-md-6 col-md-offset-3">
 		<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-			<%= f.label :ID %>
-			<%= f.number_field :accountname, class: 'form-control' %>
-			<%= f.label :password %>
-			<%= f.password_field :password, class: 'form-control' %>
-			<%= f.submit "Log in", class: "btn btn-primary" %>
+			<%= f.label :ID, "Mã số" %>
+			<%= f.number_field :accountname, class: 'form-control', placeholder: "Mã số", type: "number" %>
+			<%= f.label :password, "Mật khẩu" %>
+			<%= f.password_field :password, class: 'form-control', placeholder: "Mật khẩu" %>
+			<%= f.submit "Đăng nhập", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>
+

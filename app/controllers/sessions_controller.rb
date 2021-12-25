@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash[:danger] = 'Invalid email/password combination'
+      flash[:danger] = 'Sai thông tin đăng nhập. Vui lòng nhập lại.'
       # Create an error message.
       render 'new'
     end
