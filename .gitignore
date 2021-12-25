@@ -69,4 +69,4 @@ yarn-debug.log*
 /public/uploads
 
 # Additional 
-db/schema.rb
+# db/schema.rb
