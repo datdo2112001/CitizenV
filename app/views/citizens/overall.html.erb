@@ -1,2 +1,224 @@
 <h1> OVERALL </h1>
 <h2> Total Citizen: <%= @count %> </h2>
+
+
+
+<div id="geo-chart" class="chart-section">
+    <div class="center-block" id="regions_div" style="width: 900px; height: 500px;"></div>
+</div>
+
+<h2>Biểu đồ tròn</h2>
+
+
+<div id="pie-chart" class="chart-section">
+    <div class="row">
+        <div class="col-lg-4 pie-chart-component">
+          <h3 class="text-center">Giới tính</h3>
+          <div class="center-block" id="gt_piechart" style="width: 450px; height: 450px;"></div>
+        </div>
+        <div class="col-lg-4 pie-chart-component">
+          <h3 class="text-center">Độ tuổi</h3>
+          <div class="center-block" id="age_piechart" style="width: 450px; height: 450px;"></div>
+       </div>
+       <div class="col-lg-4 pie-chart-component">
+          <h3 class="text-center">Trình độ học vấn</h3>
+          <div class="center-block" id="edu_levele_piechart" style="width: 450px; height: 450px;"></div>
+       </div>
+    </div>
+</div>
+
+<h2>Biến động dân số theo ngày</h2>
+<div id="fluct-line-chart" class="line-chart-section">
+      <div id="fluct_chart_div"></div>
+</div>
+
+
+<script type="text/javascript">
+    google.charts.load('current', {
+    'packages':['geochart'],
+    });
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.load('current', {packages: ['corechart', 'line']});
+
+    <%# Geo-chart %>
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    <%# Pie-chart %>
+    google.charts.setOnLoadCallback(drawGtPieChart);
+    google.charts.setOnLoadCallback(drawAgePieChart);
+    google.charts.setOnLoadCallback(drawEduLevelPieChart);
+
+    <%# lINE-chart %>
+    google.charts.setOnLoadCallback(drawFluctLine);
+
+
+
+    function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+            ['State', 'Value'],
+            ['Bắc Giang', 1],
+            ['Bắc Kạn', 2],
+            ['Cao Bằng', 3],
+            ['Hà Giang', 4],
+            ['Lạng Sơn', 5],
+            ['Phú Thọ', 6],
+            ['Quảng Ninh', 7],
+            ['Thái Nguyên', 8],
+            ['Tuyên Quang', 9],
+            ['Lào Cai', 10],
+            ['Yên Bái', 11],
+            ['Điện Biên', 12],
+            ['Hòa Bình', 13],
+            ['Lai Châu', 14],
+            ['Sơn La', 15],
+            ['Bắc Ninh', 16],
+            ['Hà Nam', 17],
+            ['Hải Dương', 18],
+            ['Hưng Yên', 19],
+            ['Nam Định', 20],
+            ['Ninh Bình', 21],
+            ['Thái Bình', 22],
+            ['Vĩnh Phúc', 23],
+            ['Hà Nội City', 24],
+            ['Hải Phòng City', 25],
+            ['Hà Tĩnh', 26],
+            ['Nghệ An', 27],
+            ['Quảng Bình', 28],
+            ['Quảng Trị', 29],
+            ['Thanh Hóa', 30],
+            ['Thừa Thiên–Huế', 31],
+            ['Đắk Lắk', 32],
+            ['Đắk Nông', 33],
+            ['Gia Lai', 34],
+            ['Kon Tum', 35],
+            ['Lâm Đồng', 36],
+            ['Bình Định', 37],
+            ['Bình Thuận', 38],
+            ['Khánh Hòa', 39],
+            ['Ninh Thuận', 40],
+            ['Phú Yên', 41],
+            ['Quảng Nam', 42],
+            ['Quảng Ngãi', 43],
+            ['Đà Nẵng City', 44],
+            ['Bà Rịa–Vũng Tàu', 45],
+            ['Bình Dương', 46],
+            ['Bình Phước', 47],
+            ['Đồng Nai', 48],
+            ['Tây Ninh', 49],
+            ['Hồ Chí Minh City', 50],
+            ['An Giang', 51],
+            ['Bạc Liêu', 52],
+            ['Bến Tre', 53],
+            ['Cà Mau', 54],
+            ['Đồng Tháp', 55],
+            ['Hậu Giang', 56],
+            ['Kiên Giang', 57],
+            ['Long An', 58],
+            ['Sóc Trăng', 59],
+            ['Tiền Giang', 60],
+            ['Trà Vinh', 61],
+            ['Vĩnh Long', 62],
+            ['VN-CT', 63],
+            ['VN-DN', 64]
+        ]);
+
+        var options = {
+            region: 'VN',
+            displayMode: 'regions',
+            resolution: 'provinces',
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+    }
+
+    function drawGtPieChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Giới tính', 'Số lượng'],
+          ['Nam', 111121],
+          ['Nữ', 23452],
+          ['Khác', 23],
+        ]);
+
+        var options = {
+          <%# title: 'My Daily Activities' %>
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('gt_piechart'));
+
+        chart.draw(data, options);
+    }
+
+    function drawAgePieChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Khoảng độ tuổi', 'Số lượng'],
+          ['<18',  11],
+          ['18-24', 2],
+          ['25-34', 2],
+          ['35-44', 2],
+          ['45-54', 7],
+          ['>=55', 7]
+        ]);
+
+        var options = {
+          <%# title: 'My Daily Activities' %>
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('age_piechart'));
+
+        chart.draw(data, options);
+    }
+
+    function drawEduLevelPieChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Khoảng độ tuổi', 'Số lượng'],
+          ['<18',  11],
+          ['18-24', 2],
+          ['25-34', 2],
+          ['35-44', 2],
+          ['45-54', 7],
+          ['>=55', 7]
+        ]);
+
+        var options = {
+          <%# title: 'My Daily Activities' %>
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('edu_levele_piechart'));
+
+        chart.draw(data, options);
+    }
+
+    function drawFluctLine() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Tháng');
+      data.addColumn('number', 'Số dân');
+
+      data.addRows([
+        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
+        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
+        [30, 55], [31, 60],
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Tháng 12 năm 2021'
+        },
+        vAxis: {
+          title: 'Dân số'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('fluct_chart_div'));
+
+      chart.draw(data, options);
+    }
+</script>
