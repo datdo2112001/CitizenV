@@ -5,15 +5,15 @@
   <thead class="table">
     <tr>
       <th>CMND</th>
-      <th>Name</th>
-      <th>Birthday</th>
-      <th>Sex</th>
-      <th>Hometown</th>
-      <th>PAddress</th>
-      <th>TrAddress</th>
-      <th>Religion</th>
-      <th>Edulevel</th>
-      <th>Job</th>
+      <th>Tên</th>
+      <th>Ngày sinh</th>
+      <th>Giới tính</th>
+      <th>Quê quán</th>
+      <th>Địa chỉ thường trú</th>
+      <th>Địa chỉ tạm trú</th>
+      <th>Khu vực</th>
+      <th>Trình độ</th>
+      <th>Công việc</th>
       <th>Code</th>
     </tr>
   </thead>
@@ -25,40 +25,40 @@
 
 <br>
 
-<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Add new citizen</button>
+<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Thêm thông tin người dân</button>
 
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content">
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id01').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
-        <h2>Add new citizen</h2>
+        <h2>Thêm thông tin người dân</h2>
       </header>
       <div class="w3-container">
         <%= form_for(@citizen, remote: true) do |f| %>
-          <%= f.label :CMND %><br>
-          <p>Tối thiểu 10 chữ số</p>
+          <%= f.label :'CMND' %><br>  
           <%= f.text_field :cmnd %><br>
-          <%= f.label :Name %><br>
+          <%= f.label :'Tên' %><br>
           <%= f.text_field :name %><br>
-          <%= f.label :BirthDay %><br>
+          <%= f.label :'Ngày sinh' %><br>
           <%= f.date_field :birthday, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") %><br>
-          <%= f.label :Sex %><br>
-          <%= f.text_field :sex %><br>
-          <%= f.label :Hometown %><br>
+          <%= f.label :'Giới tính' %><br>
+          <%= f.select :sex, ['Nam', 'Nữ']%>
+          <%= f.label :'Quê quán' %><br>
           <%= f.text_field :hometown %><br>
-          <%= f.label :PAddress %><br>
+          <%= f.label :'Địa chỉ thướng trú' %><br>
           <%= f.text_field :paddress %><br>
-          <%= f.label :TrAddress%><br>
+          <%= f.label :'Địa chỉ tạm trú'%><br>
           <%= f.text_field :traddress %><br>
-          <%= f.label :Religion %><br>
+          <%= f.label :'Vùng miền' %><br>
           <%= f.text_field :religion %><br>
-          <%= f.label :Edulevel %><br>
+          <%= f.label :'Trình độ' %><br>
           <%= f.text_field :edulevel %><br>
-          <%= f.label :Job %><br>
+          <%= f.label :'Công việc' %><br>
           <%= f.text_field :job %><br>
           <%= f.label :Code %><br>
           <%= f.number_field :code %><br>
+          <br>
           <%= f.submit%>
           
         <% end %>

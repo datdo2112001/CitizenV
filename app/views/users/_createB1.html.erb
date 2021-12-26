@@ -1,15 +1,15 @@
 <%= form_with(model: @user, local: true) do |f| %>
 		<%= render 'shared/error_messages' %>
-		<h3><b> User type: B1 </b> </h3>
+		<h3><b> Loại tài khoản: B1 </b> </h3>
 		<%= f.hidden_field :tk, :value => 'B1' %>
 		<%= f.hidden_field :permission, :value => 'false' %>
 		<%= f.label :ID %>
 		<%= f.number_field :accountname, min: 010101, max:639999, step: 1 %>
-		<%= f.label :password %>
+		<%= f.label :'mật khẩu' %>
 		<%= f.password_field :password %>
-		<%= f.label :password_confirmation, "Confirmation" %>
+		<%= f.label :'Nhập lại mật khẩu', "Confirmation" %>
 		<%= f.password_field :password_confirmation %>
-		<%= f.label :region %>
+		<%= f.label :'Khu vực' %>
 		<%= f.text_field :region %>
 		<%= f.submit "Create new account", class: "btn btn-primary" %>
 	<% end %>
